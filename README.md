@@ -73,6 +73,13 @@ airflow-training/
 
 ---
 
+## 🧑‍🏫 Reference Instructor
+
+Course Author: **[Marc Lamberti](https://www.udemy.com/user/lockgfg/)**
+Platform: [Udemy](https://www.udemy.com/)
+
+---
+
 ## 📜 License
 
 Released under the [MIT License](./LICENSE).
