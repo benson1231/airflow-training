@@ -13,6 +13,14 @@ This repository provides a minimal yet complete **Airflow learning environment**
 
 ---
 
+## 🌐 Official User Guide
+
+
+For detailed usage and configuration, visit the official Apache Airflow documentation:
+👉 [Airflow User Guide](https://airflow.apache.org/docs/apache-airflow/stable/index.html)
+
+---
+
 ## 🧩 Requirements
 
 You need **Docker** installed:
