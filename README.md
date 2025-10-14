@@ -75,8 +75,9 @@ airflow-training/
 
 ## 🧑‍🏫 Reference Instructor
 
-Course Author: **[Marc Lamberti](https://www.udemy.com/user/lockgfg/)** 
+Course Author: [Marc Lamberti](https://www.udemy.com/user/lockgfg/)
 Platform: [Udemy](https://www.udemy.com/)
+Note: This repository is an educational resource inspired by Marc Lamberti’s materials.
 
 ---
 
