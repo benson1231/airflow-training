@@ -22,7 +22,7 @@ from typing import Dict, Any
 # ---- 宣告 DAG -------------------------------------------------------------
 @dag(
     description="Demonstrate XCom communication between tasks.",
-    tags=["demo", "xcom"],
+    tags=["basic", "xcom"],
 )
 def xcom_demo():
     """DAG 主體：展示 XCom 自動傳遞任務結果的機制。"""

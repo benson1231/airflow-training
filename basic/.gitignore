@@ -1,5 +1,0 @@
-__pycache__/
-logs/
-airflow.cfg
-.env
-!gitignore

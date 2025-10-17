@@ -22,7 +22,7 @@ from airflow.providers.postgres.hooks.postgres import PostgresHook
 # ---- 宣告 DAG -------------------------------------------------------------
 @dag(
     description="ETL pipeline example using Airflow SDK, PostgreSQL, and HTTP sensor.",
-    tags=["demo", "postgres", "sensor"],
+    tags=["basic", "postgres", "sensor"],
 )
 def user_processing_demo():
     """DAG 主體：以 PostgreSQL 與外部 API 為例，展示 ETL 工作流程。"""
@@ -90,11 +90,14 @@ def user_processing_demo():
     def import_user() -> None:
         """以 COPY 將 /tmp/user_info.csv 匯入 PostgreSQL。"""
         hook = PostgresHook(postgres_conn_id="postgres")
-        hook.copy_expert(
-            sql="COPY users FROM STDIN WITH CSV HEADER",
-            filename="/tmp/user_info.csv",
-        )
-        print("[import_user] Data imported into users table.")
+        try:
+            hook.copy_expert(
+                sql="COPY users FROM STDIN WITH CSV HEADER",
+                filename="/tmp/user_info.csv",
+            )
+            print("[import_user] Data imported into users table.")
+        except Exception as e:
+            print(f"[import_user] COPY failed: {e}")
 
     # (6) 任務依賴設定 ----------------------------------------------------
     # create_table → check_api_ready → parse_user → format_csv → import_user

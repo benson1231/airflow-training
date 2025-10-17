@@ -24,7 +24,7 @@ from airflow.sdk import dag, task, task_group
 # ---- 宣告 DAG -------------------------------------------------------------
 @dag(
     description="Nested TaskGroup example with retry settings.",
-    tags=["demo", "taskgroup"],
+    tags=["basic", "taskgroup"],
 )
 def group_taskgroup_demo():
     """DAG 主體：展示外層與巢狀 TaskGroup 的使用方式。"""

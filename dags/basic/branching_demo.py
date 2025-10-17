@@ -30,7 +30,7 @@ from airflow.sdk import dag, task
 # ---- 宣告 DAG -------------------------------------------------------------
 @dag(
     description="Demonstration of conditional branching in Airflow SDK.",
-    tags=["demo", "branching"],
+    tags=["basic", "branching"],
 )
 def branching_demo():
     """DAG 主體：展示分支條件與任務選擇邏輯。"""

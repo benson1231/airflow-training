@@ -24,7 +24,7 @@ from pendulum import datetime      # 處理時區與日期時間建議使用 pen
     start_date=datetime(2025, 1, 1),   # DAG 起始邏輯日期
     schedule="@daily",                # 每天排程一次
     description="Minimal DAG demo with three sequential tasks.",
-    tags=["demo", "basic"],
+    tags=["basic"],
 )
 def basic_dag_demo():
     """DAG 主體：定義任務及其依賴關係。"""
