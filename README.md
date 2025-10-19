@@ -47,12 +47,6 @@ Ensure that the **Docker daemon is running** before starting any Airflow service
 
 ## ⚙️ Quick Start with Astronomer CLI
 
-### Initialize the project
-
-```bash
-astro dev init
-```
-
 ### Start Airflow environment
 
 ```bash
