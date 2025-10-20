@@ -1,5 +1,7 @@
 # Airflow schedule
 
+**2025.10.20**
+
 本文整理 Airflow 的排程（Scheduling）核心觀念與機制，包括 DAG 時間邏輯、`catchup`、`backfill`、觸發行為、以及與任務排程相關的進階參數設定。
 
 ---

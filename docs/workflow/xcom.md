@@ -1,6 +1,8 @@
 # Airflow XCom 與 Context / TaskInstance 完整教學
 
-XCom（Cross-Communication）是 Apache Airflow 中讓任務（task）之間傳遞資料的機制。要真正理解它，必須同時掌握 `**context` 與 `ti = context['ti']` 的運作原理。本文整合兩者，完整示範自動與手動的 XCom 傳遞、以及底層 TaskInstance 的概念。
+**2025.10.20**
+
+[XCom（Cross-Communication）](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/xcoms.html)是 Apache Airflow 中讓任務（task）之間傳遞資料的機制。要真正理解它，必須同時掌握 `**context` 與 `ti = context['ti']` 的運作原理。本文整合兩者，完整示範自動與手動的 XCom 傳遞、以及底層 TaskInstance 的概念。
 
 ---
 

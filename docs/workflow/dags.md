@@ -1,5 +1,7 @@
 ## Airflow dags
 
+**2025.10.20**
+
 [DAG（Directed Acyclic Graph）](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/dags.html) 是 Apache Airflow 的核心概念，代表一組具有依賴關係的任務集合。每個 DAG 就是一個「工作流程 (Workflow)」，由多個任務 (Tasks) 組成，並按照拓樸順序執行。
 
 例如，一個資料處理的工作流程可能包含：
@@ -56,7 +58,7 @@ basic_dag_demo()
 | -------------- | ------------------- | -------------------------------------- | ---------------------------------------------------- |
 | `dag_id`       | `str`               | DAG 的唯一識別名稱，預設為函式名稱                    | `@dag(dag_id="basic_dag_demo")`                      |
 | `start_date`   | `datetime`          | DAG 的邏輯起始日期，Airflow 依據此日期建立排程點         | `start_date=datetime(2025,1,1)`                      |
-| `schedule`     | `str` 或 `timedelta` | DAG 的排程頻率，可使用 cron 表達式或預設排程字串          | `schedule="@daily"`、`schedule="0 8 * * *"`           |
+| `schedule`     | `str` 或 `timedelta` | DAG 的排程頻率，可使用 [cron 表達式](cron_expression.md)或預設排程字串          | `schedule="@daily"`、`schedule="0 8 * * *"`           |
 | `catchup`      | `bool`              | 是否補執行過去未執行的排程點，預設為 `True`              | `catchup=False`                                      |
 | `default_args` | `dict`              | 提供任務的共用設定，如 `retries`, `retry_delay` 等 | `default_args={"retries":1}`                         |
 | `tags`         | `list[str]`         | 於 UI 顯示的 DAG 標籤，方便搜尋                   | `tags=["basic"]`                                     |

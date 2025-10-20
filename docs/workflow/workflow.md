@@ -1,5 +1,7 @@
 # Airflow 架構概觀（Architecture Overview）
 
+**2025.10.20**
+
 ![Airflow Architecture Diagram](../img/arch-diag-basic.png)
 
 此圖來自 Airflow 官網，展示了 **Apache Airflow** 的基本架構與各組件間的互動流程。Airflow 採用模組化設計，透過 Web 伺服器、排程器、執行器與工作節點協同運作，以完成任務的排程與執行。

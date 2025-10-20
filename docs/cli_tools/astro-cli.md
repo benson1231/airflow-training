@@ -1,5 +1,7 @@
 # Astro CLI
 
+**2025.10.20**
+
 ## 一、什麼是 Astronomer CLI？
 
 **Astronomer CLI（Astro CLI）** 是一個命令列工具，用於在本地端或雲端管理、部署與操作 **Apache Airflow** 專案。它由 [Astronomer.io](https://www.astronomer.io/docs/astro/cli/overview) 提供，旨在簡化 Airflow 的開發、測試與 CI/CD 整合流程。

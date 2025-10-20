@@ -1,5 +1,7 @@
 # Airflow 變數設定畫面
 
+**2025.10.20**
+
 ![Airflow Variable Screenshot](../img/airflow_variable.png)
 
 上圖為 **Airflow UI** 中「變數 (Variables)」頁面的設定範例。

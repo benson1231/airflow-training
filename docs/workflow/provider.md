@@ -1,5 +1,7 @@
 # Airflow Provider 模組說明
 
+**2025.10.20**
+
 ## 一、什麼是 Provider？
 
 在 Airflow 架構中，**Provider** 是一種**擴充套件 (Extension Package)**，用於連接外部系統、服務或資料來源。它們讓 Airflow 能夠整合各種平台，如 AWS、GCP、Slack、PostgreSQL、Snowflake、Databricks 等。

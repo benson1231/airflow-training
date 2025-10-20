@@ -1,9 +1,11 @@
 # Airflow Assets
 
+**2025.10.20**
+
 ## 一、什麼是 Airflow Assets？
 
 在傳統 Airflow 中，我們以 **DAG（Directed Acyclic Graph）** 來表示一系列任務的執行流程，例如資料擷取 → 清理 → 輸出。但在資料工程或分析場景中，我們更關注的是「**資料資產 (Data Assets)**」之間的**血緣與更新關係**，這種關係更像是「資料表或檔案之間的依賴」，而非「任務之間的順序」。
-因此，**Airflow Assets** 功能的核心理念是：
+因此，[Airflow Assets](https://airflow.apache.org/docs/apache-airflow/stable/authoring-and-scheduling/assets.html) 功能的核心理念是：
 
 > 將資料本身（表格、檔案、模型、指標等）視為 Airflow 的一級公民 (First-class Citizen)。
 > 簡單來說: DAG 關心「怎麼做」，而 Assets 關心「資料變了沒」。
