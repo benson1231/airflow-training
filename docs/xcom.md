@@ -1,6 +1,6 @@
-# Airflow XCom 機制完整教學
+# Airflow XCom 與 Context / TaskInstance 完整教學
 
-XCom（Cross-Communication）是 Apache Airflow 中讓任務（task）之間傳遞資料的機制。本文將以 **自動傳遞（TaskFlow API）** 與 **手動傳遞（ti.xcom_push / ti.xcom_pull）** 兩種方式，完整示範 XCom 的使用情境與最佳實踐。
+XCom（Cross-Communication）是 Apache Airflow 中讓任務（task）之間傳遞資料的機制。要真正理解它，必須同時掌握 `**context` 與 `ti = context['ti']` 的運作原理。本文整合兩者，完整示範自動與手動的 XCom 傳遞、以及底層 TaskInstance 的概念。
 
 ---
 
@@ -118,40 +118,117 @@ push >> pull
 
 ---
 
-## 🧠 四、常見使用情境
+## 🧠 四、`**context` 與 `ti = context['ti']` 的概念
 
-| 情境         | 解法                                                       |
-| ---------- | -------------------------------------------------------- |
-| 自動任務串接     | 使用 TaskFlow API，讓上游回傳值直接傳遞給下游                            |
-| 需要多值傳遞     | 使用多個 `xcom_push()` 設不同 key                               |
-| 彙整多任務輸出    | `values = [ti.xcom_pull(task_ids=t) for t in task_list]` |
-| 跨 DAG 資料交換 | 不建議，改用資料庫或外部儲存                                           |
+### 1️⃣ `context` 是什麼？
+
+在 Airflow 任務執行時，系統會自動建立一個 **執行上下文（Execution Context）** 並傳入任務函式。它是一個 Python 字典，包含所有當前任務執行的環境資訊，例如：
+
+| 鍵名             | 說明                      |
+| -------------- | ----------------------- |
+| `dag`          | 當前 DAG 物件               |
+| `task`         | 當前任務物件                  |
+| `ti`           | **TaskInstance 物件（重點）** |
+| `ds`           | 執行日期（字串格式）              |
+| `run_id`       | DAG Run 的唯一識別碼          |
+| `logical_date` | 任務邏輯執行時間                |
+
+若想觀察內容，可在任務中印出：
+
+```python
+def show_context(**context):
+    from pprint import pprint
+    pprint(context)
+```
 
 ---
 
-## 🔍 五、UI 觀察 XCom
+### 2️⃣ `**context` 與 `context` 的差異
 
-可在 Airflow Web UI 中查看 XCom 紀錄：
+| 寫法                       | 結果                                                           | 是否建議   |
+| ------------------------ | ------------------------------------------------------------ | ------ |
+| `def my_func(**context)` | 正確接收 Airflow 傳入的所有環境參數                                       | ✅ 建議使用 |
+| `def my_func(context)`   | 可能報錯：`TypeError: got multiple values for argument 'context'` | ⚠️ 不建議 |
 
-1. 開啟 **DAGs → Task Instance → XComs** 分頁。
-2. 可看到每筆 `key`、`value`、`timestamp` 等詳細內容。
-3. 若資料為 JSON 結構，UI 可自動格式化呈現。
+Airflow 執行任務時，會以 `python_callable(**context)` 方式呼叫。若函式定義沒用 `**`，Python 會將這些關鍵字參數誤認為位置參數而導致衝突。
 
 ---
 
-## 💡 六、最佳實踐
+### 3️⃣ `ti = context['ti']` 是什麼？
+
+`ti` 是從 context 取出的 **TaskInstance**（任務實例）物件。它代表某個任務在某次執行（DAG Run）中的具體實例。可用來操作任務的內部行為，如：
+
+| 方法                            | 功能                           |
+| ----------------------------- | ---------------------------- |
+| `ti.xcom_push(key, value)`    | 將資料推送到 XCom                  |
+| `ti.xcom_pull(key, task_ids)` | 從其他任務取資料                     |
+| `ti.state`                    | 查看任務狀態（`success` / `failed`） |
+| `ti.task_id`                  | 取得任務 ID                      |
+| `ti.try_number`               | 當前重試次數                       |
+
+範例：
+
+```python
+def push_task(**context):
+    ti = context['ti']
+    ti.xcom_push(key='msg', value='Hello!')
+
+def pull_task(**context):
+    ti = context['ti']
+    value = ti.xcom_pull(key='msg', task_ids='push_task')
+    print(f"[pull_task] got = {value}")
+```
+
+---
+
+## 🧮 五、常見使用情境
+
+| 情境         | 解法                                              |
+| ---------- | ----------------------------------------------- |
+| 自動任務串接     | TaskFlow API，自動回傳值傳遞                            |
+| 多值傳遞       | 多個 `xcom_push()` 設不同 key                        |
+| 彙整多任務結果    | `[ti.xcom_pull(task_ids=t) for t in task_list]` |
+| 跨 DAG 共享資料 | 改用資料庫或外部儲存（非 XCom）                              |
+
+---
+
+## 🔍 六、UI 觀察 XCom
+
+1. 在 Airflow Web UI 打開 **DAG → Task Instance → XComs**。
+2. 可看到每筆 `key`、`value`、`timestamp`、`task_id`。
+3. JSON 結構會自動格式化，方便閱讀與除錯。
+
+---
+
+## ⚙️ 七、實務建議
 
 ✅ 建議：
 
-* XCom 僅用於傳遞 metadata 或輕量內容。
-* key 命名統一，例如 `model_path`、`summary_json`、`status_flag`。
-* 避免在回傳值中包含 Pandas DataFrame、影像、CSV 等大型物件。
+* 一律使用 `def my_func(**context)` 接收執行上下文。
+* 使用 `ti.xcom_push()` / `xcom_pull()` 時，僅傳遞 metadata 或輕量資料。
+* key 命名保持一致（例如：`model_path`、`summary_json`）。
 
 ⚠️ 避免：
 
-* 在高頻任務中大量 push/pull，會增加 Metadata DB 負擔。
-* 多層嵌套 dict 結構，導致後續維護困難。
+* 在高頻任務中頻繁 push/pull，造成 Metadata DB 壓力。
+* 傳遞大型物件（如 DataFrame、影像檔）。
 
 ---
 
-> ✅ **總結：** 透過 XCom，Airflow 讓任務間能進行輕量的資料傳遞。TaskFlow API 適合一般情境，而手動 `ti.xcom_push()` / `xcom_pull()` 則適合進階與自訂任務控制。
+## 🧠 八、關係圖總覽
+
+```
+DAG Run
+ └── TaskInstance (ti)
+       ├── 執行任務函式 (python_callable(**context))
+       │      └── context['ti'] → 指向當前任務實例
+       └── XCom push/pull → 與其他任務交換資料
+```
+
+---
+
+> ✅ **總結：**
+>
+> * `**context` 是 Airflow 自動注入的環境變數包。
+> * `ti = context['ti']` 取得當前任務實例以操作 XCom。
+> * TaskFlow API 適合一般情境；傳統 `PythonOperator` + `context` 適合需要手動控制的進階任務。
