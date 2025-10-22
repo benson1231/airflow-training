@@ -1,5 +1,7 @@
 # Airflow Documentation Index
 
+詳見: [airflow官方文檔](https://airflow.apache.org/docs/apache-airflow/stable/index.html), [Astro CLI官方文檔](https://www.astronomer.io/docs/astro/cli/overview) 與 [astronomer-Learn Airflow 3文檔](https://www.astronomer.io/docs/learn)
+
 以下為本專案 `docs/` 目錄中的文件索引。點擊檔名可直接開啟對應章節，右欄為簡短說明：
 
 ---
