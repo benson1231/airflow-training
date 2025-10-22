@@ -4,7 +4,7 @@
 
 ## 一、什麼是 Astronomer CLI？
 
-**Astronomer CLI（Astro CLI）** 是一個命令列工具，用於在本地端或雲端管理、部署與操作 **Apache Airflow** 專案。它由 [Astronomer.io](https://www.astronomer.io/docs/astro/cli/overview) 提供，旨在簡化 Airflow 的開發、測試與 CI/CD 整合流程。
+[Astronomer CLI（Astro CLI）](https://www.astronomer.io/docs/astro/cli/overview) 是一個命令列工具，用於在本地端或雲端管理、部署與操作 **Apache Airflow** 專案。它由 **Astronomer.io** 提供，旨在簡化 Airflow 的開發、測試與 CI/CD 整合流程。
 
 CLI 可用於：
 
@@ -47,18 +47,49 @@ my-astro-project/
 
 ## 四、本地開發常用命令
 
-| 命令                  | 功能                                                         |
-| ------------------- | ---------------------------------------------------------- |
-| `astro dev start`   | 啟動完整 Airflow 環境（webserver, scheduler, triggerer, postgres） |
-| `astro dev stop`    | 停止所有相關容器                                                   |
-| `astro dev restart` | 重新啟動容器並載入最新變更                                              |
-| `astro dev logs`    | 查看 Airflow 容器日誌                                            |
-| `astro dev ps`      | 顯示目前執行的容器狀態                                                |
-| `astro dev kill`    | 強制刪除所有容器與網路資源                                              |
+| 命令                                      | 功能                                                      |
+| --------------------------------------- | ------------------------------------------------------- |
+| `astro dev start`                       | 啟動完整 Airflow 環境（webserver、scheduler、triggerer、postgres） |
+| `astro dev stop`                        | 停止所有相關容器                                                |
+| `astro dev restart`                     | 重新啟動容器並載入最新變更                                           |
+| `astro dev logs`                        | 查看 Airflow 容器日誌                                         |
+| `astro dev ps`                          | 顯示目前執行的容器狀態                                             |
+| `astro dev kill`                        | 強制刪除所有容器與網路資源                                           |
+| `astro dev parse`                       | 測試 DAG 是否能正確解析（驗證語法與依賴關係）                               |
+| `astro dev pytest`                      | 執行單元測試與整合測試（使用 pytest）                                  |
+| `astro dev upgrade-test`                | 檢查專案在 Astronomer CLI 升級後的相容性                            |
+| `astro dev upgrade-test --version-test` | 驗證 Astronomer CLI 版本升級是否兼容                              |
+| `astro dev upgrade-test --dag-test`     | 驗證所有 DAG 能否在新版 Airflow 正常運行                             |
 
 ---
 
-## 五、整合 `requirements.txt`
+## 五、`astro dev run <airflow-cli-command>` 指令說明
+
+`astro dev run` 是 Astronomer CLI 中一個極為實用的命令，
+用來在本地 Astronomer 開發環境中直接執行任何 **Airflow CLI 指令**。
+它的格式為：
+
+```bash
+astro dev run <airflow-cli-command>
+```
+
+例如
+
+```bash
+astro dev run providers list
+```
+
+### 🧩 核心概念
+
+此命令的作用相當於：
+
+> 進入本地 Airflow 容器 → 執行你想要的 `airflow` 子命令 → 返回結果
+
+換句話說，它讓你**不必手動進入容器**（`docker exec -it ...`），即可執行所有 Airflow 指令。
+
+---
+
+## 六、整合 `requirements.txt`
 
 在 Astronomer 專案中，只需將外部套件（例如 Airflow Provider 或自訂函式庫）寫入 `requirements.txt`，CLI 會在建構時自動安裝：
 
@@ -77,7 +108,7 @@ CLI 建構流程：
 
 ---
 
-## 六、部署至 Astronomer Cloud
+## 七、部署至 Astronomer Cloud
 
 若使用 Astronomer 雲端服務，可透過以下步驟部署專案：
 
@@ -90,7 +121,7 @@ CLI 會自動將本地 DAG、需求套件與設定上傳至對應的 Airflow 環
 
 ---
 
-## 七、CLI 與 Docker Compose 的關係
+## 八、CLI 與 Docker Compose 的關係
 
 Astro CLI 實際上基於 **Docker Compose** 運作，主要差異是：
 
@@ -102,7 +133,7 @@ Astro CLI 實際上基於 **Docker Compose** 運作，主要差異是：
 
 ---
 
-## 八、檢查 CLI 狀態與版本
+## 九、檢查 CLI 狀態與版本
 
 ```bash
 astro version
@@ -126,7 +157,7 @@ astro dev kill && astro dev start
 
 ---
 
-## 九、官方文件與資源
+## 十、官方文件與資源
 
 * 🔗 Astronomer 官方 CLI 文件：[https://www.astronomer.io/docs/astro/cli/overview](https://www.astronomer.io/docs/astro/cli/overview)
 * 📦 Astronomer Provider Registry：[https://registry.astronomer.io/providers](https://registry.astronomer.io/providers)

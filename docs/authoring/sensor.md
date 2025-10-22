@@ -1,6 +1,8 @@
 # ⏳ Airflow Sensors 全面指南
 
-Sensors 是 Apache Airflow 中一類特殊的 **Operator**，用於「等待某條件滿足」後才繼續下游任務。例如等待檔案出現、資料庫有結果、API 回傳成功、或前序 DAG 完成。
+**2025.10.22**
+
+[Sensors](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/sensors.html) 是 Apache Airflow 中一類特殊的 **Operator**，用於「等待某條件滿足」後才繼續下游任務。例如等待檔案出現、資料庫有結果、API 回傳成功、或前序 DAG 完成。
 
 ---
 

@@ -1,6 +1,8 @@
 # Airflow Branching
 
-本文介紹 Airflow SDK 中的 **Branching**（條件分支）機制，用於根據上游任務的輸出動態決定下游任務的執行路徑。這一功能讓 DAG 能夠模擬邏輯判斷流程，例如 IF/ELSE 條件，常用於多路決策或依條件執行不同任務。
+**2025.10.22**
+
+本文介紹 Airflow SDK 中的 [Branching](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/dags.html#branching)（條件分支）機制，用於根據上游任務的輸出動態決定下游任務的執行路徑。這一功能讓 DAG 能夠模擬邏輯判斷流程，例如 IF/ELSE 條件，常用於多路決策或依條件執行不同任務。
 
 ---
 

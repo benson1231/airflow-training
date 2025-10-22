@@ -2,7 +2,7 @@
 
 **2025.10.20**
 
-本章介紹 Airflow 中的 **Connection（連線設定）** 概念、用途、管理方式與實作範例。Connections 是 Airflow 與外部系統（如資料庫、雲端服務、API、FTP 等）互動的基礎設定。
+本章介紹 Airflow 中的 [Connection（連線設定）](https://airflow.apache.org/docs/apache-airflow/stable/howto/connection.html) 概念、用途、管理方式與實作範例。Connections 是 Airflow 與外部系統（如資料庫、雲端服務、API、FTP 等）互動的基礎設定。
 
 ---
 

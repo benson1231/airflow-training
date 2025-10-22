@@ -114,7 +114,7 @@ push >> pull
 
 **關鍵重點：**
 
-* `context['ti']`：代表目前任務的 **TaskInstance**。
+* `context['ti']`：代表目前任務的 **TaskInstance**，[詳細文檔](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/xcoms.html#xcoms)。
 * `ti.xcom_push(key, value)`：將資料推送進 XCom。
 * `ti.xcom_pull(key, task_ids)`：從特定任務取出對應 key 的資料。
 

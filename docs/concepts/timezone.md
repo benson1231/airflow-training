@@ -1,5 +1,7 @@
 # Airflow Timezone
 
+**2025.10.22**
+
 ## 🕒 為何要設定時區（Timezone）
 
 Airflow 的所有 DAG 執行（DAG runs）、任務排程（task scheduling）與 UI 顯示時間都受到 **timezone 設定** 影響。若未設定，預設採用 **UTC 時區**。這可能導致與實際地區時間（如台北 GMT+8）不一致，尤其在：
@@ -75,7 +77,7 @@ with DAG(
   airflow dags next-execution example_tz_dag
   airflow dags list-runs -d example_tz_dag
   ```
-* Web UI：右上角可切換顯示時區
+* Web UI：`User` 區塊可切換顯示時區
 
 ---
 

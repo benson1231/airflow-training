@@ -1,10 +1,12 @@
 # Dynamic DAGs（動態 DAG 生成）
 
+**2025.10.22**
+
 ---
 
 ## 🧩 一、概念說明
 
-在 Airflow 中，**Dynamic DAGs**（動態 DAG）指的是：在 DAG 解析階段（parse time）動態生成多個 DAG 或任務結構，而非手動逐一定義。這種方式常用於：
+在 Airflow 中，[Dynamic DAGs](https://airflow.apache.org/docs/apache-airflow/stable/howto/dynamic-dag-generation.html)（動態 DAG）指的是：在 DAG 解析階段（parse time）動態生成多個 DAG 或任務結構，而非手動逐一定義。這種方式常用於：
 
 * 多資料來源自動化導入（e.g., 每個客戶一個 DAG）
 * 批次任務自動配置（e.g., 每個表格或檔案自動建立 ETL 流程）

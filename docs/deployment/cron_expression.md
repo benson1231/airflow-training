@@ -134,8 +134,7 @@ airflow dags next-execution <dag_id> --num 5
 ## 🧭 八、常用工具
 
 * [crontab.guru](https://crontab.guru) → 即時預覽 cron 時間
-* [cronitor.io/tools/crontab](https://cronitor.io/tools/crontab) → 可視化排程產生器
-* Airflow CLI → `airflow dags next-execution` 檢查排程結果
+* Airflow CLI → `airflow dags next-execution <dag_id>` 檢查排程結果
 
 ---
 

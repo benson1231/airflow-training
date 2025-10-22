@@ -1,5 +1,7 @@
 # Airflow Logging（日誌系統）
 
+**2025.10.22**
+
 ## 🧩 概念簡介
 Airflow 的 **Logging 機制** 用於追蹤 DAG、任務（Task）與系統元件（Scheduler、Executor、Worker）的執行情況。所有 log 皆可集中管理、搜尋與分析，協助除錯與稽核。
 

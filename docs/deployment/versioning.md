@@ -1,5 +1,7 @@
 # DAG Versioning（DAG 版本管理）
 
+**2025.10.22**
+
 ## 🧭 一、概念與目的
 
 DAG Versioning 是指在 Airflow 專案中維護同一 DAG 的多個版本，以便：
@@ -62,22 +64,54 @@ Airflow 3.x 新增 **DAG Bundles** 機制，用於將 DAG 的程式碼、設定�
 範例結構：
 
 ```
-my_dag_project/
- ├── dags/
- │   ├── etl_dag.py
- │   └── etl_dag_bundle.yaml
- ├── requirements.txt
- └── README.md
+dags/
+├── sales_pipeline/
+│   ├── bundle.yaml                # Bundle 設定檔（唯一識別）
+│   ├── dags/
+│   │   └── sales_dag.py           # DAG 定義
+│   ├── include/
+│   │   └── config.yaml            # DAG 參數或 metadata
+│   ├── libs/                      # 專屬模組、ETL 函式
+│   │   ├── io_utils.py
+│   │   └── transformations.py
+│   ├── requirements.txt           # 該 bundle 的套件依賴
+│   └── tests/                     # 單元測試
+│       └── test_sales_dag.py
+│
+├── ml_training/
+│   ├── bundle.yaml
+│   ├── dags/
+│   │   └── ml_train_dag.py
+│   ├── libs/
+│   │   └── model_utils.py
+│   ├── requirements.txt
+│   └── configs/
+│       └── parameters.yaml
+│
+└── shared/
+    └── common_utils.py            # 多個 bundle 共用的模組
+
 ```
 
-在 `etl_dag_bundle.yaml` 中：
+在 `dags/sales_pipeline/bundle.yaml` 中：
 
 ```yaml
-version: v1.2.3
-entrypoint: dags/etl_dag.py
-metadata:
-  author: benson1231
-  created: 2025-10-20
+name: sales_pipeline
+description: "Daily ETL pipeline for sales data processing."
+dag_files:
+  - dags/sales_dag.py
+python:
+  version: 3.11
+dependencies:
+  - pandas==2.2.2
+  - requests==2.31.0
+```
+
+需將 `dag_bundles_enabled` 設為 True
+
+```ini
+[dag_bundles]
+dag_bundles_enabled = True
 ```
 
 ---

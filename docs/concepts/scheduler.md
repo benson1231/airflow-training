@@ -1,6 +1,8 @@
 # Airflow Scheduler 運作原理完整指南
 
-Airflow 的 **Scheduler** 是整個工作流程的「排程大腦」，負責根據 DAG 的設定，自動建立 DAG Run、產生任務執行排程，並將任務交給 Executor 執行。了解 Scheduler 的運作機制，有助於掌握 Airflow 為何、何時觸發任務。
+**2025.10.22**
+
+Airflow 的 [Scheduler](https://airflow.apache.org/docs/apache-airflow/stable/administration-and-deployment/scheduler.html) 是整個工作流程的「排程大腦」，負責根據 DAG 的設定，自動建立 DAG Run、產生任務執行排程，並將任務交給 Executor 執行。了解 Scheduler 的運作機制，有助於掌握 Airflow 為何、何時觸發任務。
 
 ---
 

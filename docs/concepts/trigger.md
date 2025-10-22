@@ -1,5 +1,7 @@
 # Airflow Triggers
 
+**2025.10.22**
+
 本文介紹 Airflow 中的 **Triggers** 概念、使用場景與與傳統執行方式（Executor/Worker）的差異，並提供 SDK 風格範例示範如何在無需長時間佔用資源的情況下進行非同步任務處理。
 
 ---

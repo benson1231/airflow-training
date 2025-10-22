@@ -1,5 +1,7 @@
 # Airflow Testing
 
+**2025.10.22**
+
 本文介紹 Airflow 的測試機制與實務策略，包括 DAG 驗證、任務邏輯測試、模擬 XCom／變數、與 pytest 框架整合方式。
 
 ---

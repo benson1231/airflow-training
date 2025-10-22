@@ -1,8 +1,10 @@
 # Airflow 模板化機制（Templating）
 
+**2025.10.22**
+
 ## 🧭 一、概念說明
 
-Airflow 的 **Templating（模板化）** 機制讓你能在任務（Task）或 DAG 中動態插入變數，例如日期、檔案名稱、路徑或上游任務的輸出。
+Airflow 的 [Templating（模板化）](https://airflow.apache.org/docs/apache-airflow/stable/templates-ref.html) 機制讓你能在任務（Task）或 DAG 中動態插入變數，例如日期、檔案名稱、路徑或上游任務的輸出。
 這是透過 **Jinja2 語法** 實作的，也就是在字串中使用 `{{ ... }}` 來注入變數或邏輯運算。
 
 ---

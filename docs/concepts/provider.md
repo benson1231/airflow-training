@@ -4,7 +4,7 @@
 
 ## 一、什麼是 Provider？
 
-在 Airflow 架構中，**Provider** 是一種**擴充套件 (Extension Package)**，用於連接外部系統、服務或資料來源。它們讓 Airflow 能夠整合各種平台，如 AWS、GCP、Slack、PostgreSQL、Snowflake、Databricks 等。
+在 Airflow 架構中，[Provider](https://airflow.apache.org/docs/apache-airflow-providers/index.html) 是一種**擴充套件 (Extension Package)**，用於連接外部系統、服務或資料來源。它們讓 Airflow 能夠整合各種平台，如 AWS、GCP、Slack、PostgreSQL、Snowflake、Databricks 等。
 
 Provider 並非單純的 plug-in，而是透過 [Airflow 官方 Provider Framework](https://registry.astronomer.io/providers) 註冊的獨立模組，負責：
 
@@ -31,21 +31,22 @@ Provider 並非單純的 plug-in，而是透過 [Airflow 官方 Provider Framewo
 
 ## 三、在 Astro CLI 中安裝 Provider
 
-在使用 Astronomer 平台開發時，你只需在 `requirements.txt` 檔案中列出所需的 Provider 套件，然後執行：
-
-```bash
-astro dev start
-```
-
-Astronomer 會在容器建構時自動安裝這些套件，無需額外修改 Dockerfile。
+在使用 Astronomer 平台開發時，你只需在 `requirements.txt` 檔案中列出所需的 Provider 套件，然後執行`astro dev start`。Astronomer 會在容器建構時自動安裝這些套件，無需額外修改 Dockerfile。
 
 **範例：**
 
+先在 `requirements.txt` 中加入以下內容
+
 ```
-# requirements.txt
 apache-airflow-providers-slack
 apache-airflow-providers-google
 apache-airflow-providers-postgres
+```
+
+接著執行
+
+```bash
+astro dev start
 ```
 
 執行後，這些 Provider 將自動註冊進 Airflow 環境。

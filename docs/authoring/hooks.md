@@ -1,8 +1,10 @@
 # Airflow Hooks
 
+**2025.10.22**
+
 ## 🧭 一、Hooks 是什麼？
 
-**Hook** 是 Airflow 與外部系統（如資料庫、API、儲存服務）之間的**介面層（interface layer）**。
+[Hook](https://www.astronomer.io/docs/learn/what-is-a-hook#hook-basics) 是 Airflow 與外部系統（如資料庫、API、儲存服務）之間的**介面層（interface layer）**。
 它負責處理連線、認證與資料交換，提供一組統一的 Python API，讓 Operator 可以透過同一套邏輯讀寫不同來源。
 
 📘 **簡單理解：**

@@ -1,6 +1,8 @@
 # Airflow Executor 運作原理與種類總覽
 
-Executor（執行器）是 Airflow 的核心元件之一，負責決定「任務（Task）」實際如何被執行與分配在哪裡執行。換句話說，Scheduler 負責**排程任務**，而 Executor 負責**執行任務**。
+**2025.10.22**
+
+[Executor（執行器）](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/executor/index.html)是 Airflow 的核心元件之一，負責決定「任務（Task）」實際如何被執行與分配在哪裡執行。換句話說，Scheduler 負責**排程任務**，而 Executor 負責**執行任務**。
 
 ---
 

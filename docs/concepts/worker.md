@@ -1,5 +1,7 @@
 # Airflow Worker 運作原理與角色說明
 
+**2025.10.22**
+
 Airflow 的 **Worker** 是實際執行任務（Task）的核心元件。Scheduler 負責排程任務，Executor 負責分配任務，而 Worker 則負責真正「跑起來」每一個任務邏輯。理解 Worker 的運作模式，是掌握任務執行效能與穩定性的關鍵。
 
 ---

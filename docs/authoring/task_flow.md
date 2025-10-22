@@ -1,5 +1,7 @@
 # TaskFlow API（任務流程化 API）
 
+**2025.10.22**
+
 **TaskFlow API** 是 Airflow 自 2.0 版本引入的重要語法糖，讓使用者可以以 **Pythonic** 的方式撰寫 DAG 與任務（tasks），而不再需要傳統的 `PythonOperator`。它透過 **@dag** 與 **@task** 裝飾器（decorator）來封裝執行邏輯，使 DAG 定義更簡潔、可讀性更高。
 
 ---

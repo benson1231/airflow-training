@@ -1,6 +1,8 @@
 # Task Dependencies
 
-本文說明 Airflow 任務之間的依賴（Dependencies）設定方法與進階用法，包括 `>>`、`<<`、`chain()` 等語法，以及在動態 DAG、TaskFlow、TaskGroup 中的實務應用。
+**2025.10.22**
+
+本文說明 [Airflow 任務之間的依賴（Dependencies）](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/dags.html#task-dependencies)設定方法與進階用法，包括 `>>`、`<<`、`chain()` 等語法，以及在動態 DAG、TaskFlow、TaskGroup 中的實務應用。
 
 ---
 

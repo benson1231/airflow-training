@@ -1,8 +1,10 @@
 # Airflow 動態任務映射 (Dynamic Task Mapping)
 
+**2025.10.22**
+
 ## 🌭 一、概念簡介
 
-Dynamic Task Mapping 是 Airflow 2.3 之後引入的功能，用於 **在執行期間根據輸入資料動態建立任務實例 (task instances)**。
+[Dynamic Task Mapping](https://airflow.apache.org/docs/apache-airflow/stable/authoring-and-scheduling/dynamic-task-mapping.html) 是 Airflow 2.3 之後引入的功能，用於 **在執行期間根據輸入資料動態建立任務實例 (task instances)**。
 傳統 DAG 需要在撰寫時明確定義所有任務；但若處理多組輸入資料（如多個檔案、樣本或 API 呼叫），就需要寫大量重複的 task。
 動態映射讓你根據上游輸出，**自動展開多個相同任務實例**，實現類似「for 迴圈」的效果。
 

@@ -1,5 +1,7 @@
 # Airflow Operator 完整指南
 
+**2025.10.22**
+
 在 Apache Airflow 中，[`Operator`](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/operators.html) 是建立任務（task）的核心元件。每個 Operator 代表一個具體的動作，例如執行 Python 函式、運行 Bash 指令、呼叫 API、觸發其他 DAG 等。熟悉 Operator 是撰寫 DAG 的基礎之一。
 
 ---

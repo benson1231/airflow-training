@@ -4,7 +4,7 @@
 
 ![Airflow Variable Screenshot](../img/airflow_variable.png)
 
-上圖為 **Airflow UI** 中「變數 (Variables)」頁面的設定範例。
+上圖為 **Airflow UI** 中 [變數 (Variables)](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/variables.html) 頁面的設定範例。
 在這裡可以建立全域變數，例如 Slack 機器人 Token、API Key、資料夾路徑等，以便在 DAG 中透過 `Variable.get()` 方法安全地讀取。
 
 下圖中的例子設定了一個變數：

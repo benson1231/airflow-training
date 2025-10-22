@@ -1,5 +1,7 @@
 # Airflow DAG Best Practices
 
+**2025.10.22**
+
 ---
 
 ## 🎯 目標

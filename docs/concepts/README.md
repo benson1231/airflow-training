@@ -5,6 +5,7 @@
 ![Airflow Architecture Diagram](../img/arch-diag-basic.png)
 
 此圖來自 Airflow 官網，展示了 **Apache Airflow** 的基本架構與各組件間的互動流程。Airflow 採用模組化設計，透過 Web 伺服器、排程器、執行器與工作節點協同運作，以完成任務的排程與執行。
+[Airflow Core Concepts](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/index.html)
 
 ---
 
@@ -66,6 +67,8 @@
 | `dags_folder`      | DAG 檔案所在路徑          | `/usr/local/airflow/dags`                                |
 | `base_url`         | Airflow Web UI 位置   | `http://localhost:8080`                                  |
 | `load_examples`    | 是否載入預設範例 DAG        | `False`                                                  |
+
+> astro-cli 啟動之專案無法直接修改 `Airflow.cfg`，應修改 `.env` 或在 `Dockerfile` 中設定環境變數
 
 ---
 
