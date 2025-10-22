@@ -1,6 +1,9 @@
 # 🚀 Airflow-Training
 
-[![Docker](https://img.shields.io/badge/run%20with-Docker-blue?logo=docker)](https://www.docker.com/get-started/) [![Apache Airflow](https://img.shields.io/badge/Apache%20Airflow-2.x-orange?logo=apacheairflow)](https://airflow.apache.org/) [![License: MIT](https://img.shields.io/badge/License-MIT-green)](./LICENSE)
+[![Docker Engine](https://img.shields.io/badge/Docker-27.5.1-blue?logo=docker)](https://www.docker.com/get-started/)
+[![Astro CLI](https://img.shields.io/badge/Astro%20CLI-1.36.0-purple?logo=astro)]()
+[![Airflow Runtime](https://img.shields.io/badge/Airflow-3.1.0%2Bastro.2-orange?logo=apache-airflow)]()
+[![License: MIT](https://img.shields.io/badge/License-MIT-green)](./LICENSE)
 
 ---
 
@@ -10,11 +13,23 @@ This repository provides a complete and ready-to-run **Apache Airflow learning e
 
 Key features:
 
-* Ready-to-run Airflow setup via Docker or Astronomer CLI.
-* Practical DAG examples for ETL, scheduling, and data orchestration.
-* Slack integration and Postgres connection examples.
+* Ready-to-run Airflow setup powered by **Docker** and **Astronomer CLI**.
+* Includes practical **DAG examples**.
+* Provides a detailed **documentation set** under [docs folder](docs/README.md), explaining Airflow concepts, operators, and advanced usage.
+* Demonstrates real-world integrations such as **Slack notification** and **Postgres connections**.
 
 ---
+
+### ⚙️ Environment
+
+| Component | Version |
+|------------|----------|
+| Docker Engine | 27.5.1 |
+| Astro CLI | 1.36.0 |
+| Astronomer Runtime | 3.1.0 + astro.2 |
+
+---
+
 
 ## 📦 Project Structure
 
@@ -22,7 +37,6 @@ Key features:
 AIRFLOW-TRAINING/
 ├── dags/                # All DAGs (organized by category)
 ├── include/             # Shared Python modules (utils)
-├── img/                 # Images used in documentation
 ├── docs/                # Markdown documentation and guides
 ├── .astro/              # Astronomer CLI configuration
 ├── Dockerfile           # Custom Airflow image definition
@@ -67,25 +81,6 @@ astro dev restart
 
 ---
 
-## 🌐 Official User Guide
-
-For detailed usage and configuration, refer to the official documentation:
-👉 [Apache Airflow User Guide](https://airflow.apache.org/docs/apache-airflow/stable/index.html)
-
----
-
-## 🧠 Learning Focus
-
-This repository helps you understand:
-
-* DAG scheduling and dependencies
-* Task retries, sensors, and custom operators
-* XCom and parameter passing
-* Slack and Postgres integration
-* Managing environment variables in Airflow UI
-
----
-
 ## 📘 Notes
 
 * Default Airflow UI: [http://localhost:8080](http://localhost:8080)
@@ -96,6 +91,14 @@ This repository helps you understand:
   apache-airflow-providers-postgres
   apache-airflow-providers-slack
   ```
+
+---
+
+## 🌐 Official User Guide
+
+For detailed usage and configuration, refer to the official documentation:
+👉 [Apache Airflow User Guide](https://airflow.apache.org/docs/apache-airflow/stable/index.html)
+👉 [Astro CLI docs](https://www.astronomer.io/docs/astro/cli/overview)
 
 ---
 
